@@ -1,0 +1,147 @@
+// ---------------------------------------------------------------------------
+// Footer year
+// ---------------------------------------------------------------------------
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// ---------------------------------------------------------------------------
+// Mobile nav toggle
+// ---------------------------------------------------------------------------
+const navToggle = document.getElementById("navToggle");
+const mobileNav = document.getElementById("mobileNav");
+
+navToggle.addEventListener("click", () => {
+  const isHidden = mobileNav.classList.contains("hidden");
+  mobileNav.classList.toggle("hidden", !isHidden);
+  mobileNav.classList.toggle("flex", isHidden);
+  navToggle.setAttribute("aria-expanded", String(isHidden));
+});
+
+mobileNav.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    mobileNav.classList.add("hidden");
+    mobileNav.classList.remove("flex");
+    navToggle.setAttribute("aria-expanded", "false");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Scroll reveal
+// ---------------------------------------------------------------------------
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+document.querySelectorAll("[data-reveal]").forEach((el) => revealObserver.observe(el));
+
+// ---------------------------------------------------------------------------
+// Projects — edit this array to add, remove, or reorder your work.
+// No backend, no database: this list IS the source of truth.
+// imageUrl uses GitHub's own auto-generated repo preview image, so it stays
+// in sync with each repo automatically. Swap in a real screenshot path
+// (e.g. "assets/projects/adidas.png") any time you want a custom one.
+// ---------------------------------------------------------------------------
+const PROJECTS = [
+  {
+    title: "Adidas US Sales Analytics",
+    description: "Exploratory analysis of Adidas's U.S. retail sales — regional performance, product trends, and profit margins broken down and visualized.",
+    tags: ["Data Analysis", "Sales"],
+    githubUrl: "https://github.com/SALAHDDINEDKAKI/adidas-us-sales-analytics",
+    liveUrl: "",
+    imageUrl: "https://opengraph.githubassets.com/1/SALAHDDINEDKAKI/adidas-us-sales-analytics",
+  },
+  {
+    title: "HR KPI Excel Dashboard",
+    description: "An HR analytics dashboard built in Excel tracking headcount, attrition, average tenure, salary by department, and performance rating distribution.",
+    tags: ["Excel", "Dashboarding"],
+    githubUrl: "https://github.com/SALAHDDINEDKAKI/hr-kpi-excel-dashboard",
+    liveUrl: "",
+    imageUrl: "https://opengraph.githubassets.com/1/SALAHDDINEDKAKI/hr-kpi-excel-dashboard",
+  },
+  {
+    title: "Healthcare Spending vs. Life Expectancy",
+    description: "A data story exploring the relationship between healthcare spending and life expectancy across countries, built with pandas and matplotlib/seaborn.",
+    tags: ["Python", "Pandas", "Data Visualization"],
+    githubUrl: "https://github.com/SALAHDDINEDKAKI/healthcare-spending-life-expectancy",
+    liveUrl: "",
+    imageUrl: "https://opengraph.githubassets.com/1/SALAHDDINEDKAKI/healthcare-spending-life-expectancy",
+  },
+  {
+    title: "SaaS Subscription SQL Analysis",
+    description: "Eight business-question SQL queries against a SaaS subscription dataset in PostgreSQL — churn, revenue, and customer behavior answered directly in SQL.",
+    tags: ["SQL", "PostgreSQL"],
+    githubUrl: "https://github.com/SALAHDDINEDKAKI/saas-subscription-sql-analysis",
+    liveUrl: "",
+    imageUrl: "https://opengraph.githubassets.com/1/SALAHDDINEDKAKI/saas-subscription-sql-analysis",
+  },
+];
+
+function externalLinkSVG() {
+  return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>`;
+}
+
+function githubMarkSVG() {
+  return `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.54-3.88-1.54-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.2.67.8.56A10.53 10.53 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z"/></svg>`;
+}
+
+function renderProjects() {
+  const grid = document.getElementById("projectsGrid");
+
+  grid.innerHTML = PROJECTS.map(
+    (p) => `
+    <article class="overflow-hidden rounded-2xl border border-tomato-500/20 bg-ink-light transition hover:border-tomato-500/40 hover:-translate-y-1">
+      <div class="aspect-video w-full border-b border-tomato-500/20 bg-ink">
+        <img src="${p.imageUrl}" alt="${p.title}" class="h-full w-full object-cover" loading="lazy" />
+      </div>
+      <div class="p-6">
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="font-display text-lg font-semibold text-cream">${p.title}</h3>
+          <div class="flex flex-shrink-0 gap-2">
+            ${p.githubUrl ? `<a href="${p.githubUrl}" target="_blank" rel="noopener" aria-label="View code on GitHub" class="text-cream/40 transition hover:text-tomato-300">${githubMarkSVG()}</a>` : ""}
+            ${p.liveUrl ? `<a href="${p.liveUrl}" target="_blank" rel="noopener" aria-label="View live project" class="text-cream/40 transition hover:text-tomato-300">${externalLinkSVG()}</a>` : ""}
+          </div>
+        </div>
+        <p class="mt-2 text-sm text-cream/60">${p.description}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          ${p.tags.map((t) => `<span class="rounded-full border border-tomato-500/25 px-3 py-1 font-mono text-[11px] text-tomato-200">${t}</span>`).join("")}
+        </div>
+      </div>
+    </article>
+  `
+  ).join("");
+}
+
+renderProjects();
+
+// ---------------------------------------------------------------------------
+// Contact form — no backend, so this opens the visitor's email client with
+// the message pre-filled (a mailto: link built from the form fields).
+// ---------------------------------------------------------------------------
+const CONTACT_EMAIL = "salahddinedkaki@gmail.com";
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+const submitBtn = document.getElementById("submitBtn");
+
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = contactForm.name.value.trim();
+  const email = contactForm.email.value.trim();
+  const subject = contactForm.subject.value.trim();
+  const message = contactForm.message.value.trim();
+
+  const body = `From: ${name} (${email})\n\n${message}`;
+  const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  window.location.href = mailtoUrl;
+
+  formStatus.textContent = "Opening your email client to send this…";
+  formStatus.className = "mt-3 font-mono text-xs text-emerald-400";
+});

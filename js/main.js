@@ -55,7 +55,7 @@ const PROJECTS = [
     tags: ["Data Analysis", "Sales"],
     githubUrl: "https://github.com/SALAHDDINEDKAKI/adidas-us-sales-analytics",
     liveUrl: "",
-    imageUrl: "https://opengraph.githubassets.com/1/SALAHDDINEDKAKI/adidas-us-sales-analytics",
+    imageUrl: "/assets/thumbnail1.png",
   },
   {
     title: "HR KPI Excel Dashboard",
@@ -63,7 +63,7 @@ const PROJECTS = [
     tags: ["Excel", "Dashboarding"],
     githubUrl: "https://github.com/SALAHDDINEDKAKI/hr-kpi-excel-dashboard",
     liveUrl: "",
-    imageUrl: "https://opengraph.githubassets.com/1/SALAHDDINEDKAKI/hr-kpi-excel-dashboard",
+    imageUrl: "/assets/thumbnail3.png",
   },
   {
     title: "Healthcare Spending vs. Life Expectancy",
@@ -71,7 +71,7 @@ const PROJECTS = [
     tags: ["Python", "Pandas", "Data Visualization"],
     githubUrl: "https://github.com/SALAHDDINEDKAKI/healthcare-spending-life-expectancy",
     liveUrl: "",
-    imageUrl: "https://opengraph.githubassets.com/1/SALAHDDINEDKAKI/healthcare-spending-life-expectancy",
+    imageUrl: "/assets/thumbnail2.png",
   },
   {
     title: "SaaS Subscription SQL Analysis",

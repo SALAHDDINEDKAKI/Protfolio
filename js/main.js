@@ -74,10 +74,21 @@ document.querySelectorAll("[data-reveal]").forEach((el) => revealObserver.observ
 // ---------------------------------------------------------------------------
 const EXPERIENCE = [
   {
+    company: "A-Team-Event",
+    role: "Event Assistant",
+    location: "Frankfurt, Germany",
+    dates: "07/2026 – Present",
+    bullets: [
+      "Handled on-site logistics and material transport",
+      "Maintained compliance with food hygiene standard",
+      "Provided catering service at live events"
+    ],
+  },
+  {
     company: "Decathlon",
     role: "Warehouse Associate",
     location: "Schwetzingen, Germany",
-    dates: "07/2025 – 01/2026",
+    dates: "07/2025 – 05/2026",
     bullets: [
       "Sorted, scanned and packed customer orders to meet dispatch deadlines",
       "Loaded finished orders for shipping partners including DHL and Hermes",
@@ -85,33 +96,14 @@ const EXPERIENCE = [
     ],
   },
   {
-    company: "Add company",
-    role: "Add role",
-    location: "Add location",
-    dates: "MM/YYYY – MM/YYYY",
+    company: "Carrefour",
+    role: "Sales Assistant",
+    location: "Agadir, Morocco",
+    dates: "04/2023 – 09/2023",
     bullets: [
-      "Add a bullet point describing what you did",
-      "Add another bullet point",
-    ],
-  },
-  {
-    company: "Add company",
-    role: "Add role",
-    location: "Add location",
-    dates: "MM/YYYY – MM/YYYY",
-    bullets: [
-      "Add a bullet point describing what you did",
-      "Add another bullet point",
-    ],
-  },
-  {
-    company: "Add company",
-    role: "Add role",
-    location: "Add location",
-    dates: "MM/YYYY – MM/YYYY",
-    bullets: [
-      "Add a bullet point describing what you did",
-      "Add another bullet point",
+      "Assisted customers with product selection and general inquiries on the sales floor",
+      "Restocked shelves and maintained product displays throughout the store",
+      "Operated the cash register and processed customer transactions",
     ],
   },
 ];

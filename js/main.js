@@ -37,6 +37,7 @@ const NAV_SCROLLED_CLASSES = [
   "backdrop-blur",
   "shadow-lg",
   "shadow-black/30",
+  "rounded-full"
 ];
 
 function updateNavOnScroll() {

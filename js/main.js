@@ -186,7 +186,7 @@ const PROJECTS = [
     tags: ["Excel", "Dashboarding"],
     githubUrl: "https://github.com/SALAHDDINEDKAKI/hr-kpi-excel-dashboard",
     liveUrl: "",
-    imageUrl: "/assets/thumbnail3.png",
+    imageUrl: "Protfolio/assets/thumbnail3.png",
   },
   {
     title: "Healthcare Spending vs. Life Expectancy",

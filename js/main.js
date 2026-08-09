@@ -25,6 +25,30 @@ mobileNav.querySelectorAll("a").forEach((link) => {
 });
 
 // ---------------------------------------------------------------------------
+// Floating nav — invisible at the top of the page, becomes a solid pill
+// stuck to the top once the user scrolls past NAV_SCROLL_THRESHOLD.
+// ---------------------------------------------------------------------------
+const mainNav = document.getElementById("mainNav");
+const NAV_SCROLL_THRESHOLD = 24;
+const NAV_SCROLLED_CLASSES = [
+  "border",
+  "border-tomato-500/20",
+  "bg-ink-light/90",
+  "backdrop-blur",
+  "shadow-lg",
+  "shadow-black/30",
+];
+
+function updateNavOnScroll() {
+  const isScrolled = window.scrollY > NAV_SCROLL_THRESHOLD;
+  mainNav.classList.toggle(NAV_SCROLLED_CLASSES[0], isScrolled);
+  NAV_SCROLLED_CLASSES.forEach((cls) => mainNav.classList.toggle(cls, isScrolled));
+}
+
+window.addEventListener("scroll", updateNavOnScroll, { passive: true });
+updateNavOnScroll();
+
+// ---------------------------------------------------------------------------
 // Scroll reveal
 // ---------------------------------------------------------------------------
 const revealObserver = new IntersectionObserver(
@@ -40,6 +64,105 @@ const revealObserver = new IntersectionObserver(
 );
 
 document.querySelectorAll("[data-reveal]").forEach((el) => revealObserver.observe(el));
+
+// ---------------------------------------------------------------------------
+// Work History — edit this array to add, remove, or reorder roles.
+// The first entry is real. The other three are placeholders so the
+// tab-switching UI has something to show — swap in real company/role/
+// dates/bullets before publishing.
+// ---------------------------------------------------------------------------
+const EXPERIENCE = [
+  {
+    company: "Decathlon",
+    role: "Warehouse Associate",
+    location: "Schwetzingen, Germany",
+    dates: "07/2025 – 01/2026",
+    bullets: [
+      "Sorted, scanned and packed customer orders to meet dispatch deadlines",
+      "Loaded finished orders for shipping partners including DHL and Hermes",
+      "Worked within a fast-paced logistics team to hit daily targets",
+    ],
+  },
+  {
+    company: "Add company",
+    role: "Add role",
+    location: "Add location",
+    dates: "MM/YYYY – MM/YYYY",
+    bullets: [
+      "Add a bullet point describing what you did",
+      "Add another bullet point",
+    ],
+  },
+  {
+    company: "Add company",
+    role: "Add role",
+    location: "Add location",
+    dates: "MM/YYYY – MM/YYYY",
+    bullets: [
+      "Add a bullet point describing what you did",
+      "Add another bullet point",
+    ],
+  },
+  {
+    company: "Add company",
+    role: "Add role",
+    location: "Add location",
+    dates: "MM/YYYY – MM/YYYY",
+    bullets: [
+      "Add a bullet point describing what you did",
+      "Add another bullet point",
+    ],
+  },
+];
+
+let activeExperienceIndex = 0;
+
+function renderExperience() {
+  const tabsEl = document.getElementById("experienceTabs");
+  const contentEl = document.getElementById("experienceContent");
+
+  tabsEl.innerHTML = EXPERIENCE.map((exp, i) => {
+    const isActive = i === activeExperienceIndex;
+    const tabClasses = isActive
+      ? "border-tomato-500/40 bg-tomato-500/10 text-tomato-200"
+      : "border-transparent text-cream/50 hover:bg-ink-light hover:text-cream/80";
+    return `
+      <li class="flex-shrink-0 md:flex-shrink">
+        <button type="button" data-index="${i}" class="exp-tab w-full whitespace-nowrap rounded-xl border px-4 py-3 text-left font-mono text-xs transition ${tabClasses}">
+          ${exp.company}
+        </button>
+      </li>
+    `;
+  }).join("");
+
+  const exp = EXPERIENCE[activeExperienceIndex];
+  contentEl.innerHTML = `
+    <div class="rounded-2xl border border-tomato-500/20 bg-ink-light p-7">
+      <div class="flex flex-wrap items-baseline justify-between gap-3">
+        <h3 class="font-display text-lg font-semibold text-cream">${exp.role} <span class="text-tomato-300">— ${exp.company}</span></h3>
+        <span class="font-mono text-xs text-cream/50">${exp.dates}</span>
+      </div>
+      <p class="mt-1 text-sm text-cream/50">${exp.location}</p>
+      <ul class="mt-5 space-y-2.5 text-sm text-cream/65">
+        ${exp.bullets
+          .map(
+            (b) =>
+              `<li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-tomato-400"></span>${b}</li>`
+          )
+          .join("")}
+      </ul>
+    </div>
+  `;
+
+  tabsEl.querySelectorAll(".exp-tab").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      activeExperienceIndex = Number(btn.dataset.index);
+      renderExperience();
+    });
+  });
+}
+
+renderExperience();
 
 // ---------------------------------------------------------------------------
 // Projects — edit this array to add, remove, or reorder your work.

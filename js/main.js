@@ -168,7 +168,7 @@ const PROJECTS = [
   {
     title: "Adidas US Sales Analytics",
     description: "Exploratory analysis of Adidas's U.S. retail sales — regional performance, product trends, and profit margins broken down and visualized.",
-    tags: ["Data Analysis", "Sales"],
+    tags: ["Pandas", "Matplotlib", "Python", "Power BI", "PostgreSQL", "HTML"],
     githubUrl: "https://github.com/SALAHDDINEDKAKI/adidas-us-sales-analytics",
     liveUrl: "",
     imageUrl: "/Protfolio/assets/thumbnail1.png",
@@ -176,7 +176,7 @@ const PROJECTS = [
   {
     title: "HR KPI Excel Dashboard",
     description: "An HR analytics dashboard built in Excel tracking headcount, attrition, average tenure, salary by department, and performance rating distribution.",
-    tags: ["Excel", "Dashboarding"],
+    tags: ["Excel", "KPI Dashboard", "Pivots", "Charts"],
     githubUrl: "https://github.com/SALAHDDINEDKAKI/hr-kpi-excel-dashboard",
     liveUrl: "",
     imageUrl: "/Protfolio/assets/thumbnail3.png",
@@ -184,18 +184,26 @@ const PROJECTS = [
   {
     title: "Healthcare Spending vs. Life Expectancy",
     description: "A data story exploring the relationship between healthcare spending and life expectancy across countries, built with pandas and matplotlib/seaborn.",
-    tags: ["Python", "Pandas", "Data Visualization"],
+    tags: ["Python", "Pandas", "Data Visualization", "Matplotlib", "Seaborn"],
     githubUrl: "https://github.com/SALAHDDINEDKAKI/healthcare-spending-life-expectancy",
     liveUrl: "",
     imageUrl: "/Protfolio/assets/thumbnail2.png",
   },
   {
     title: "SaaS Subscription SQL Analysis",
-    description: "Eight business-question SQL queries against a SaaS subscription dataset in PostgreSQL — churn, revenue, and customer behavior answered directly in SQL.",
-    tags: ["SQL", "PostgreSQL"],
+    description: "Eight business-question SQL queries against a SaaS subscription dataset in PostgreSQL, churn, revenue, and customer behavior answered directly in SQL.",
+    tags: ["SQL", "PostgreSQL", "Data Analysis"],
     githubUrl: "https://github.com/SALAHDDINEDKAKI/saas-subscription-sql-analysis",
     liveUrl: "",
     imageUrl: "/Protfolio/assets/thumbnail4.png",
+  },
+  {
+    title: "Ev population analysis",
+    description: "Analysis of Washington State's electric vehicle registration data using Python, SQL, and Power BI",
+    tags: ["Python", "SQL", "Power BI", "Data Analysis"],
+    githubUrl: "https://github.com/SALAHDDINEDKAKI/ev-population-analysis",
+    liveUrl: "",
+    imageUrl: "/Protfolio/assets/thumbnail5.png",
   },
 ];
 
